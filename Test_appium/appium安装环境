@@ -1,0 +1,73 @@
+"""
+1 模拟器下载谷歌安装器
+2.下载对应的 chromdriver
+老版本用broswer 新版本用chrom
+adb如何连接模拟器
+【win版】
+夜神模拟器 adb connect 127.0.0.1:62001
+逍遥模拟器 adb connect 127.0.0.1:21503
+mumu模拟器 adb connect 127.0.0.1:7555
+
+
+
+打印设备/模拟器上的所有软件包
+adb shell pm list package
+
+打印设备/模拟器浏览器的 包名
+adb shell pm list package|findstr browser
+
+打印设备/模拟器上浏览器的版本
+adb shell pm dump com.android.browser |findstr version
+adb shell pm dump com.android.chrome |findstr version
+
+
+检查webview基本环境的命令
+
+adb shell dumpsys package com.android.webview | findstr versionName
+adb shell dumpsys package com.android.chrome | findstr versionName
+adb shell cat /proc/net/unix | findstr webview
+
+
+appium 滑动查找
+self.driver.find_element_by_android_uiautomator('new UiScrollable(new UiSelector().'
+                                                        'scrollable(true).instance(0)).'
+                                                        'scrollIntoView(new UiSelector().textContains("病人").'
+                                                        'instance(0));').click()
+"""
+#
+# 获取当前应用的包名和当前的页面名
+# adb shell dumpsys window | findstr mCurrentFocus
+#
+#
+# return 页面跳转
+# f string
+# f"dddd{text}DDD"
+#
+# allure测试报告步骤
+# 1 .pytest 文件名 --alluredir ./存放的路径
+# pytest test_case.py --alluredir ./result2
+# 2.allure serve ./存放路径
+# 2.1 直接生成网页
+#    allure serve ./result2
+# 2.2 生成文件默认allure_report
+#    allure generate ./result2
+# 2.3 -o 指定生成文件
+# allure generate ./result2 -o report2
+#
+# 截图上传allure
+# # 截图 _inance =self
+# _inance.driver.save_screenshot("tmp.png")
+# # 以二进制的方式打开图片
+# with open("tmp.png","rb") as f:
+#     content=f.read()
+# # 将图片传送给allure
+# allure.attach(content,attachment_type=allure.attachment_type.PNG)
+#
+#
+#
+# https://blog.csdn.net/mieleizhi0522/article/details/82142856
+#
+#
+# ./ 当前目录。
+# ../ 父级目录。
+# / 根目录
